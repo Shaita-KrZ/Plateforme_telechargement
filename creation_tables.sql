@@ -18,7 +18,9 @@ numero 			VARCHAR(16) 		PRIMARY KEY,
 dateExpiration 	DATE 				NOT NULL, 
 montantDepart 	REAL 				NOT NULL,
 montantCourant 	REAL,
-client 			INTEGER 			REFERENCES Editeur(id)
+client 			INTEGER 			REFERENCES Utilisateur(idClient),
+CHECK(montantDepart > 0),
+CHECK(dateExpiration > CURRENT_DATE)
 );
 
 --Contrainte : PROJ(CartePrépayée,client)=PROJ(Utilisateur,IdClient)
@@ -26,7 +28,8 @@ client 			INTEGER 			REFERENCES Editeur(id)
 CREATE TABLE CarteBleue ( 
 numero 			VARCHAR(16) 		PRIMARY KEY,
 dateExpiration 	DATE 				NOT NULL, 
-cryptogramme 	INTEGER 			NOT NULL
+cryptogramme 	INTEGER 			NOT NULL,
+CHECK(dateExpiration > CURRENT_DATE)
 );
 
 CREATE TABLE Transaction (
@@ -36,33 +39,34 @@ acheteur 		INTEGER					REFERENCES Utilisateur(idClient) NOT NULL,
 destinataire 	INTEGER					REFERENCES Utilisateur(idClient) NOT NULL,
 carte 			VARCHAR(16) 			REFERENCES CartePrepayee(numero),
 CB 				VARCHAR(16) 			REFERENCES CarteBleue(numero),
-CHECK (carte IS NOT NULL OR CB IS NOT NULL)
+CHECK(carte IS NOT NULL OR CB IS NOT NULL),
+CHECK(montant > 0)
 );
 
 
 CREATE TABLE Application (
-nom 			VARCHAR(15) 		PRIMARY KEY,
+nom 			VARCHAR(30) 		PRIMARY KEY,
 editeur 		INTEGER				REFERENCES Editeur(id) NOT NULL,
 description 	VARCHAR 
 );
 
 CREATE TABLE Ressource (
-nom 			VARCHAR(15) 		PRIMARY KEY,
+nom 			VARCHAR(30) 		PRIMARY KEY,
 editeur 		INTEGER				REFERENCES Editeur(id) NOT NULL,
-app 			VARCHAR(15) 		REFERENCES Application(nom) NOT NULL,
+app 			VARCHAR(30) 		REFERENCES Application(nom) NOT NULL,
 description 	VARCHAR
 );
 
 
 CREATE TABLE Achat_simple_ressource (
-ressource 		VARCHAR(15) 		REFERENCES Ressource(nom),
+ressource 		VARCHAR(30) 		REFERENCES Ressource(nom),
 achat 			INTEGER 			REFERENCES Transaction(id),
 dateAchat 		DATE 				NOT NULL,
 PRIMARY KEY(ressource, achat)
 );
 
 CREATE TABLE Achat_simple_app (
-app 			VARCHAR(15) 		REFERENCES Application(nom),
+app 			VARCHAR(30) 		REFERENCES Application(nom),
 achat 			INTEGER 			REFERENCES Transaction(id),
 dateAchat 		DATE 				NOT NULL,
 PRIMARY KEY(app, achat)
@@ -70,20 +74,21 @@ PRIMARY KEY(app, achat)
 
 CREATE TABLE Avis (
 client 			INTEGER				REFERENCES Utilisateur(idClient),
-app 			VARCHAR(15) 		REFERENCES Application(nom),
+app 			VARCHAR(30) 		REFERENCES Application(nom),
 note 			INTEGER				CHECK(note > 0 AND note < 6),
 commentaire 	VARCHAR(500),
 PRIMARY KEY(client,app)
 );
 
 CREATE TABLE Abonnement (
-app 			VARCHAR(15) 		REFERENCES Application(nom),
+app 			VARCHAR(30) 		REFERENCES Application(nom),
 achat 			INTEGER 			REFERENCES Transaction(id),
 automatique 	BOOLEAN,
 nbMois 			INTEGER,
 prixAbonnement 	REAL,
 dateAbonnement 	DATE,
-PRIMARY KEY(achat,app)
+PRIMARY KEY(achat,app),
+CHECK(prixAbonnement > 0)
 --CHECK(nbMois NOT NULL if automatique = FALSE)
 );
 
@@ -110,25 +115,25 @@ propriétaire 	INTEGER				REFERENCES Utilisateur(idClient) NOT NULL
 
 CREATE TABLE ProduitAchete (
 id 				INTEGER				PRIMARY KEY,
-res 			VARCHAR(15) 		REFERENCES Ressource(nom),
-app 			VARCHAR(15) 		REFERENCES Application(nom),
-propriétaire 	INTEGER				REFERENCES Utilisateur(idClient) NOT NULL,
+res 			VARCHAR(30) 		REFERENCES Ressource(nom),
+app 			VARCHAR(30) 		REFERENCES Application(nom),
+proprietaire 	INTEGER				REFERENCES Utilisateur(idClient) NOT NULL,
 CHECK(res IS NOT NULL OR app IS NOT NULL)
 );
 
 CREATE TABLE Installe_sur (
 produit 		INTEGER				REFERENCES ProduitAchete(id) PRIMARY KEY,
-terminal 		VARCHAR(10) 		REFERENCES Terminal(numero_serie)
+terminal 		VARCHAR(15) 		REFERENCES Terminal(numero_serie)
 );
 
 CREATE TABLE Ressource_disponible_pour (
-res 			VARCHAR(15) 		REFERENCES Ressource(nom),
+res 			VARCHAR(30) 		REFERENCES Ressource(nom),
 systeme 		INTEGER				REFERENCES OS(id),
 PRIMARY KEY (res, systeme)
 );
 
 CREATE TABLE Application_disponible_pour (
-app 			VARCHAR(15) 		REFERENCES Application(nom),
+app 			VARCHAR(30) 		REFERENCES Application(nom),
 systeme 		INTEGER				REFERENCES OS(id),
 PRIMARY KEY (app, systeme)
 );

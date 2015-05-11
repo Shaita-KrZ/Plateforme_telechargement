@@ -8,7 +8,7 @@ DELETE FROM OS;
 DELETE FROM Abonnement;
 DELETE FROM Avis;
 DELETE FROM Achat_simple_app;
-DELETE FROM Achat_simple_res;
+DELETE FROM Achat_simple_ressource;
 DELETE FROM Ressource;
 DELETE FROM Application;
 DELETE FROM Transaction;
