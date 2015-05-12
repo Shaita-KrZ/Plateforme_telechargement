@@ -109,8 +109,8 @@ UNIQUE(constructeur, designation)
 
 CREATE TABLE Terminal (
 numero_serie 	VARCHAR(15) 		PRIMARY KEY,
-modèle 			INTEGER				REFERENCES Modele(id) NOT NULL,
-propriétaire 	INTEGER				REFERENCES Utilisateur(idClient) NOT NULL
+modele 			INTEGER				REFERENCES Modele(id) NOT NULL,
+proprietaire 	INTEGER				REFERENCES Utilisateur(idClient) NOT NULL
 );
 
 CREATE TABLE ProduitAchete (

@@ -95,6 +95,8 @@ INSERT INTO ProduitAchete(id, app, proprietaire)
 VALUES(2, 'Angry Birds', 2);
 INSERT INTO ProduitAchete(id, app, proprietaire)
 VALUES(3, '94degrees', 3);
+INSERT INTO ProduitAchete(id, app, proprietaire)
+VALUES(4, '94degrees', 1);
 
 INSERT INTO Installe_sur
 VALUES(1, 'SAMSGALS501');
