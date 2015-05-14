@@ -7,10 +7,10 @@ UNIQUE(nom, contact, url)
 );
 
 CREATE TABLE Utilisateur (
-idClient 	INTEGER 			PRIMARY KEY,
+idClient 	SERIAL	PRIMARY KEY,
 nom 		VARCHAR(20)			NOT NULL, 
 prenom 		VARCHAR(20)			NOT NULL,
-UNIQUE(nom, prenom)
+UNIQUE(nom, prenom),
 );
 
 CREATE TABLE CartePrepayee (
@@ -137,8 +137,3 @@ app 			VARCHAR(30) 		REFERENCES Application(nom),
 systeme 		INTEGER				REFERENCES OS(id),
 PRIMARY KEY (app, systeme)
 );
-
-
-
-
-
