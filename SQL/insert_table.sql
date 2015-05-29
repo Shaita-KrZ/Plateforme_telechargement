@@ -35,26 +35,38 @@ INSERT INTO Transaction(id, montant, acheteur, destinataire, CB)
 VALUES(3, 30, 2, 3, '8549764853219456');
 INSERT INTO Transaction(id, montant, acheteur, destinataire, CB)
 VALUES(4, 9.99, 5, 5, '5588774412465879');
+INSERT INTO Transaction(id, montant, acheteur, destinataire, CB)
+VALUES(5, 1.50, 5, 5, '5588774412465879');
+INSERT INTO Transaction(id, montant, acheteur, destinataire, CB)
+VALUES(6, 1.50, 1, 1, '8549764853219456');
+INSERT INTO Transaction(id, montant, acheteur, destinataire, CB)
+VALUES(7, 0.50, 1, 1, '8549764853219456');
 
 INSERT INTO Application
-VALUES('Angry Birds', 1, 'description d\'Angry Birds');
+VALUES('Angry Birds', 1, 'description d\'Angry Birds', 0.90);
+INSERT INTO Application(nom, editeur, prix)
+VALUES('94degrees', 1, 0);
 INSERT INTO Application
-VALUES('94degrees', 1);
-INSERT INTO Application
-VALUES('CameraHD', 2, 'description de CameraHD');
+VALUES('CameraHD', 2, 'description de CameraHD', 1.50);
 
-INSERT INTO Ressource
-VALUES('Cheat code Angry Birds', 1, 'Angry Birds');
-INSERT INTO Ressource
-VALUES('PhotoFilter', 2, 'CameraHD');
+INSERT INTO Ressource(nom, editeur, app, prix)
+VALUES('Cheat code Angry Birds', 1, 'Angry Birds', 0);
+INSERT INTO Ressource(nom, editeur, app, prix)
+VALUES('PhotoFilter', 2, 'CameraHD', 0.50);
 
 INSERT INTO Achat_simple_ressource
 VALUES('Cheat code Angry Birds', 1, '2015-05-04');
+INSERT INTO Achat_simple_ressource
+VALUES('PhotoFilter', 7, '2015-05-04');
 
 INSERT INTO Achat_simple_app
 VALUES('Angry Birds', 2, '2015-05-07');
 INSERT INTO Achat_simple_app
 VALUES('94degrees', 3, '2015-05-11');
+INSERT INTO Achat_simple_app
+VALUES('CameraHD', 5, '2015-05-11');
+INSERT INTO Achat_simple_app
+VALUES('CameraHD', 6, '2015-05-11');
 
 INSERT INTO Avis
 VALUES(2, 'Angry Birds', 4, 'Super jeu mais quelques bugs encore');

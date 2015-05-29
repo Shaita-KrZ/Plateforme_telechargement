@@ -47,14 +47,18 @@ CHECK(montant > 0)
 CREATE TABLE Application (
 nom 			VARCHAR(30) 		PRIMARY KEY,
 editeur 		INTEGER				REFERENCES Editeur(id) NOT NULL,
-description 	VARCHAR 
+description 	VARCHAR,
+prix 			REAL				NOT NULL,
+CHECK(prix >= 0)
 );
 
 CREATE TABLE Ressource (
 nom 			VARCHAR(30) 		PRIMARY KEY,
 editeur 		INTEGER				REFERENCES Editeur(id) NOT NULL,
 app 			VARCHAR(30) 		REFERENCES Application(nom) NOT NULL,
-description 	VARCHAR
+description 	VARCHAR,
+prix 			REAL				NOT NULL,
+CHECK(prix >= 0)
 );
 
 
