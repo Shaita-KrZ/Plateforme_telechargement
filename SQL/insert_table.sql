@@ -28,22 +28,22 @@ INSERT INTO CarteBleue
 VALUES('5588774412465879', '2018-12-08', '444');
 
 INSERT INTO Transaction(id, montant, acheteur, destinataire, carte)
-VALUES(1, 55.06, 1, 1, '00001');
+VALUES(1, 0, 1, 1, '00001');
 INSERT INTO Transaction(id, montant, acheteur, destinataire, CB)
-VALUES(2, 25, 2, 2, '8549764853219456');
+VALUES(2, 0.90, 2, 2, '8549764853219456');
 INSERT INTO Transaction(id, montant, acheteur, destinataire, CB)
-VALUES(3, 30, 2, 3, '8549764853219456');
+VALUES(3, 0, 2, 3, '8549764853219456');
 INSERT INTO Transaction(id, montant, acheteur, destinataire, CB)
-VALUES(4, 9.99, 5, 5, '5588774412465879');
+VALUES(4, 11.97, 5, 5, '5588774412465879');
 INSERT INTO Transaction(id, montant, acheteur, destinataire, CB)
-VALUES(5, 1.50, 5, 5, '5588774412465879');
+VALUES(5, 1.5, 5, 5, '5588774412465879');
 INSERT INTO Transaction(id, montant, acheteur, destinataire, CB)
 VALUES(6, 1.50, 1, 1, '8549764853219456');
 INSERT INTO Transaction(id, montant, acheteur, destinataire, CB)
 VALUES(7, 0.50, 1, 1, '8549764853219456');
 
 INSERT INTO Application
-VALUES('Angry Birds', 1, 'description d\'Angry Birds', 0.90);
+VALUES('Angry Birds', 1, 'description de Angry Birds', 0.90);
 INSERT INTO Application(nom, editeur, prix)
 VALUES('94degrees', 1, 0);
 INSERT INTO Application

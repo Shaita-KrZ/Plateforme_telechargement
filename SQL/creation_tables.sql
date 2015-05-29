@@ -10,7 +10,7 @@ CREATE TABLE Utilisateur (
 idClient 	SERIAL	PRIMARY KEY,
 nom 		VARCHAR(20)			NOT NULL, 
 prenom 		VARCHAR(20)			NOT NULL,
-UNIQUE(nom, prenom),
+UNIQUE(nom, prenom)
 );
 
 CREATE TABLE CartePrepayee (
@@ -40,7 +40,7 @@ destinataire 	INTEGER					REFERENCES Utilisateur(idClient) NOT NULL,
 carte 			VARCHAR(16) 			REFERENCES CartePrepayee(numero),
 CB 				VARCHAR(16) 			REFERENCES CarteBleue(numero),
 CHECK(carte IS NOT NULL OR CB IS NOT NULL),
-CHECK(montant > 0)
+CHECK(montant >= 0)
 );
 
 
