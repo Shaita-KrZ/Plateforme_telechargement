@@ -126,8 +126,9 @@ CHECK(res IS NOT NULL OR app IS NOT NULL)
 );
 
 CREATE TABLE Installe_sur (
-produit 		INTEGER				REFERENCES ProduitAchete(id) PRIMARY KEY,
-terminal 		VARCHAR(15) 		REFERENCES Terminal(numero_serie)
+produit 		INTEGER				REFERENCES ProduitAchete(id),
+terminal 		VARCHAR(15) 		REFERENCES Terminal(numero_serie),
+PRIMARY KEY(produit,terminal)
 );
 
 CREATE TABLE Ressource_disponible_pour (

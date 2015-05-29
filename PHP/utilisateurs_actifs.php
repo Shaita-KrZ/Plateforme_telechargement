@@ -6,58 +6,37 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-    <title>Meilleurs éditeurs</title>
+    <title>Utilisateurs les plus actifs</title>
   </head>	
   <body>
 	<div class="container">
 		<div id="header" class="jumbotron">
-			<h1>Liste des meilleurs éditeurs</h1>
+			<h1>Liste des utilisateurs les plus actifs</h1>
 		</div>
-		<h1>Liste des éditeurs avec le plus gros chiffre d'affaire</h1>
-		<div>
-			<table>
-				<th>
-					<td>Nom de l'éditeur</td>
-					<td>Chiffre d'affaire</td>
-				</th>
+		<div class="panel-default panel">
+			<table class="table">
+				<tr>
+					<td>Nom</td>
+					<td>Prénom</td>
+					<td>Nombre d'avis</td>
+				</tr>
 				<?php
 				include('connect.php');
 				$db = fConnect();
 				
-				$sql = "";
+				$sql = "SELECT U.nom AS nom, U.prenom AS prenom, COUNT(A.app) AS nbAvis
+					FROM Utilisateur U, Avis A
+					WHERE U.idClient = A.client
+					GROUP BY U.nom, U.prenom
+					ORDER BY nbAvis";
 				$req = pg_query($db, $sql);
 
 				while($res = pg_fetch_array($req, null, PGSQL_ASSOC))
 				{
 					echo('<tr>');
-					echo('<td>$res[]</td>');
-					echo('<td>$res[]</td>');
-					echo('</tr>');
-				}
-
-				?>
-			</table>
-		</div>
-
-		<h1>Liste des éditeurs avec le plus de ventes</h1>
-		<div>
-			<table>
-				<th>
-					<td>Nom de l'éditeur</td>
-					<td>Nombre de ventes</td>
-				</th>
-				<?php
-				include('connect.php');
-				$db = fConnect();
-				
-				$sql = "";
-				$req = pg_query($db, $sql);
-
-				while($res = pg_fetch_array($req, null, PGSQL_ASSOC))
-				{
-					echo('<tr>');
-					echo('<td>$res[]</td>');
-					echo('<td>$res[]</td>');
+					echo('<td>' . $res['nom'] . '</td>');
+					echo('<td>' . $res['prenom'] . '</td>');
+					echo('<td>' . $res['nbavis'] . '</td>');
 					echo('</tr>');
 				}
 

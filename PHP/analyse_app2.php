@@ -11,41 +11,40 @@
   <body>
 	<div class="container">
 		<div id="header" class="jumbotron">
-			<h1>Liste des profits</h1>
+			<h1>Liste des installations par contenu</h1>
 		</div>
-		<h1>Profit du NIMPStore</h1>
-
-		<?php
-		include('connect.php');
-		$db = fConnect();
-		
-		$sql = "";
-		$req = pg_query($db, $sql);
-
-		$res = pg_fetch_array($req, null, PGSQL_ASSOC))
-
-		?>
-
-
-		<h1>Liste des profits des éditeurs</h1>
-		<div>
-			<table>
-				<th>
-					<td>Nom de l'éditeur</td>
-					<td>Chiffre d'affaire (70%)</td>
-				</th>
+		<div class="panel-default panel">
+			<table class="table">
+				<tr>
+					<td>Nom du contenu</td>
+					<td>Type</td>
+					<td>Nombre d'installation</td>
+				</tr>
 				<?php
 				include('connect.php');
 				$db = fConnect();
-				
-				$sql = "";
+				$sql = "SELECT PAch.res AS res, PAch.app AS app, COUNT(inst.terminal) AS nbInstallation 
+					FROM Produitachete PAch 
+					LEFT OUTER JOIN Installe_sur inst
+					ON PAch.id = inst.produit
+					GROUP BY PAch.res, PAch.app
+					ORDER BY nbInstallation DESC";
 				$req = pg_query($db, $sql);
 
 				while($res = pg_fetch_array($req, null, PGSQL_ASSOC))
 				{
 					echo('<tr>');
-					echo('<td>$res[]</td>');
-					echo('<td>$res[]</td>');
+					if($res['res'] != "")
+					{
+						echo('<td>' . $res['res'] . '</td>');
+						echo('<td> Ressource </td>');
+					}
+					else
+					{
+						echo('<td>' . $res['app'] . '</td>');
+						echo('<td> Application </td>');
+					}
+					echo('<td>' . $res['nbinstallation'] . '</td>');
 					echo('</tr>');
 				}
 
