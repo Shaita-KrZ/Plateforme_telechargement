@@ -6,20 +6,19 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-    <title>Menu analyste</title>
+    <title>Menu Administrateur</title>
   </head>	
   <body>
 	<div class="container">
 		<div id="header" class="jumbotron">
-			<h1>Menu Analyste</h1>
+			<h1>Menu Administrateur</h1>
 		</div>
 		<div>
 			<ul>
-				<li><a href="app_rentables.php">Les applications les plus rentables</a></li>
-				<li><a href="meilleurs_editeurs.php">Les meilleurs éditeurs</a></li>
-				<li><a href="analyse_app2.php">Nombre d'installation des apps</a></li>
-				<li><a href="profits.php">Profits des distributeurs et éditeurs</a></li>
-				<li><a href="utilisateurs_actifs.php">Utilisateurs actifs</a></li>
+				<li><a href="ajout-app.php">Ajouter des applications</a></li>
+				<li><a href="ajout-ressource.php">Ajouter des ressources</a></li>
+				<li><a href="ajout-editeur.php">Ajouter des editeurs</a></li>
+				<li><a href="accord-carte.php">Accorder des cartes prépayées</a></li>
 				<br/>
 				<li><a href="deconnexion.php">Deconnexion</a></li>
 			</ul>

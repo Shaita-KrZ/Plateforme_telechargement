@@ -7,11 +7,11 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-    <title>Inscription</title>
+    <title>Ajout Terminal</title>
   </head>
   <body>
-		<?php include("inscription.php");?>
-		<h3 class="text-center"> Erreur lors de votre inscription </h3>
-		<h4 class="text-center"> Vous avez surement oublier d'entrer un champ ou le nom existe déjà ou bien le numéro de série de votre terminal existe déjà.</h4>
+		<h5 style='color:red'> Erreur : Veuillez remplir tous les champs </h5>
+		<?php include("ajout-terminal.php");?>
+		
   </body>
 </html>

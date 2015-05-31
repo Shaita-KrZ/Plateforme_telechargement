@@ -1,3 +1,18 @@
+<?php
+	session_start();
+	
+	if(isset($_SESSION['typeUser']))
+	{
+	
+		if($_SESSION['typeUser']==='analyst')
+			header('Location: menu_analyst.php');
+		else if ($_SESSION['typeUser']=='admin')
+			header('Location: menu_admin.php');
+		else if ($_SESSION['typeUser']=='user')
+			header('Location: menu_user.php');
+	}
+?>
+
 <!DOCTYPE html>
 <html>
   <head>

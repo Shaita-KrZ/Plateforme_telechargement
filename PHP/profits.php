@@ -65,8 +65,8 @@
 		<div class="panel-default panel">
 			<table class="table">
 				<tr>
-					<td>Nom de l'éditeur</td>
-					<td>Bénéfice (70% du CA réalisé)</td>
+					<td><strong>Nom de l'éditeur<strong></td>
+					<td><strong>Bénéfice (70% du CA réalisé)<strong></td>
 				</tr>
 				<?php
 				

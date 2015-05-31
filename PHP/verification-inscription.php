@@ -19,13 +19,35 @@
 	$prenom=$_POST['prenom'];
 	$terminal=$_POST['terminal'];
 	$modele=$_POST['modele'];
+	
+	include("connect.php");
+	$vConn=fConnect();
 	if(empty($nom) || empty($prenom) || empty($terminal) || empty($modele)){
 		header('Location: inscription-erreur.php');
 		exit();
 	}
+	$vSql="SELECT * FROM Utilisateur where nom='$nom'";
+	$vQuery=pg_query($vConn,$vSql);
+	if($vResult=pg_fetch_array($vQuery)){
+		header('Location: inscription-erreur.php');
+		exit();
+	}
 	
-	include("connect.php");
-	$vConn=fConnect();
+	$vSql="SELECT * FROM Terminal where numero_serie='$terminal'";
+	$vQuery=pg_query($vConn,$vSql);
+	if($vResult=pg_fetch_array($vQuery)){
+		header('Location: inscription-erreur.php');
+		exit();
+	}
+	
+	$vSql="SELECT * FROM Modele where id='$modele'";
+	$vQuery=pg_query($vConn,$vSql);
+	if(!$vResult=pg_fetch_array($vQuery)){
+		header('Location: inscription-erreur.php');
+		exit();
+	}
+	
+	
 	$vSql="INSERT INTO Utilisateur(idClient,nom, prenom) VALUES (DEFAULT,'$nom','$prenom') RETURNING idClient as id;"; 
 	$vQuery=pg_query($vConn,$vSql);
 	$vResult=pg_fetch_array($vQuery);
@@ -35,7 +57,7 @@
 	
 	<h2> Votre inscription a bien été pris en compte</h2>
 		<!-- insert une ligne horizontal --> <hr>
-	<p><a href="accueil.php"> Retour pour identification </a></p>
+	<p><a href="index.php"> Retour pour identification </a></p>
 	</div>
   </body>
 </html>

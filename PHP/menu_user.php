@@ -1,3 +1,7 @@
+<?php
+	session_start();
+?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -6,20 +10,21 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-    <title>Menu analyste</title>
+    <title>Menu Utilisateur</title>
   </head>	
   <body>
 	<div class="container">
 		<div id="header" class="jumbotron">
-			<h1>Menu Analyste</h1>
+			<?php
+				echo('<h1>Bonjour '.$_SESSION['nom'].' '.$_SESSION['prenom'].'.</h1>');
+			?>
+			<h2>Menu Utilisateur</h2>
 		</div>
 		<div>
 			<ul>
-				<li><a href="app_rentables.php">Les applications les plus rentables</a></li>
-				<li><a href="meilleurs_editeurs.php">Les meilleurs éditeurs</a></li>
-				<li><a href="analyse_app2.php">Nombre d'installation des apps</a></li>
-				<li><a href="profits.php">Profits des distributeurs et éditeurs</a></li>
-				<li><a href="utilisateurs_actifs.php">Utilisateurs actifs</a></li>
+				<li><a href="apps.php">Les applications compatibles avec mes terminaux</a></li>
+				<li><a href="historique.php">Historique d'achat et d'installation d'applications</a></li>
+				<li><a href="terminaux.php">Gérer mes terminaux</a></li>
 				<br/>
 				<li><a href="deconnexion.php">Deconnexion</a></li>
 			</ul>

@@ -26,13 +26,29 @@
 				<label for="terminal">Numero de serie du terminal</label>
 				<input type="text" name="terminal" class="form-control" id="terminal" placeholder="Entrez le numero de serie de votre terminal">
 			</div>
+			
+			
 			<div>
 				<label for="modele">Modèle du terminal</label>
-				<input type="text" name="modele" class="form-control" id="modele" placeholder="Entrez le numero de serie de votre terminal">
+				<select name="modele" id="modele" class="form-control">
+				<?php
+						include("connect.php");
+						$vConn=fConnect();
+						$vSql="SELECT id FROM Modele";
+						$vQuery=pg_query($vConn,$vSql);
+						while($vResult=pg_fetch_array($vQuery)){
+							echo "<option>";
+							echo $vResult['id']; 
+							echo "</option>";
+						}
+				?>
+				</select>
 			</div>
+			
 			<br>
-			<button type="submit" class="btn btn-default">S'inscrire</button>
+			<button type="submit" class="btn btn-default">S'inscrire</button>-
 		</form>
 	</div>
   </body>
+  
 </html>

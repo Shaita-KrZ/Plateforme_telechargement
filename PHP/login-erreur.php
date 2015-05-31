@@ -10,8 +10,10 @@
     <title>Inscription</title>
   </head>
   <body>
-		<?php include("inscription.php");?>
-		<h3 class="text-center"> Erreur lors de votre inscription </h3>
-		<h4 class="text-center"> Vous avez surement oublier d'entrer un champ ou le nom existe déjà ou bien le numéro de série de votre terminal existe déjà.</h4>
+		<h1 class="text-center"> Votre login est incorrect.</h1>
+		<h2 class="text-center"> Si vous êtes un utilisateur le <strong>login</strong> correspond à votre <strong>nom.</strong></h2>
+				<!-- insert une ligne horizontal --> <hr>
+		<p><a href="index.php"> Retour pour identification </a></p>
   </body>
+  
 </html>

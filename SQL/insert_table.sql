@@ -4,15 +4,15 @@ INSERT INTO Editeur
 VALUES(2, 'EA', 'Arthur', 'ea.com');
 
 INSERT INTO Utilisateur
-VALUES(1, 'Lucas', 'Willemot');
+VALUES(1, 'Willemot', 'Lucas');
 INSERT INTO Utilisateur
-VALUES(2, 'Valentin', 'Paul');
+VALUES(2, 'Paul', 'Valentin');
 INSERT INTO Utilisateur
-VALUES(3, 'Mathilde', 'Fau');
+VALUES(3, 'Fau', 'Mathilde');
 INSERT INTO Utilisateur
-VALUES(4, 'Walyd', 'Shaita');
+VALUES(4, 'Shaita', 'Walid');
 INSERT INTO Utilisateur
-VALUES(5, 'Alaeddine', 'Hajjem');
+VALUES(5, 'Hajjem', 'Alaeddine');
 
 
 INSERT INTO CartePrepayee
