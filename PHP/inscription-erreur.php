@@ -12,6 +12,7 @@
   <body>
 		<?php include("inscription.php");?>
 		<h3 class="text-center"> Erreur lors de votre inscription </h3>
-		<h4 class="text-center"> Vous avez surement oublier d'entrer un champ ou le nom existe déjà ou bien le numéro de série de votre terminal existe déjà.</h4>
+		<h4 class="text-center"> Vous avez surement oublier d'entrer un champ ou le login existe déjà ou bien le numéro de série de votre terminal existe déjà.</h4>
+		<h4 class="text-center"> Les informations ne doivent pas dépasser 20 caractères.</h4>
   </body>
 </html>

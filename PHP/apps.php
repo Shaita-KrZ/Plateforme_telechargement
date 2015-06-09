@@ -27,6 +27,7 @@
 				<?php
 				include('connect.php');
 				$db = fConnect();
+				$idClient=$_SESSION['id'];
 				
 				$sql = "SELECT DISTINCT AD.app as Application, a.prix as prix, E.nom as editeur, a.description as description
 					FROM application a, Terminal T, Modele M, OS, Application_disponible_pour AD, Utilisateur U, editeur E
@@ -36,7 +37,7 @@
 					AND M.systeme = OS.id
 					AND AD.systeme = OS.id
 					AND U.idClient = T.proprietaire
-					AND U.idClient = ".$_SESSION['id'];
+					AND U.idClient = '$idClient'";
 				$req = pg_query($db, $sql);
 				
 				

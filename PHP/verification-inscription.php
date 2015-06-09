@@ -15,6 +15,7 @@
 			<h1>Validation de l'inscription</h1>
 		</div>
 	<?php
+	$login=$_POST['login'];
 	$nom=$_POST['nom'];
 	$prenom=$_POST['prenom'];
 	$terminal=$_POST['terminal'];
@@ -22,11 +23,13 @@
 	
 	include("connect.php");
 	$vConn=fConnect();
-	if(empty($nom) || empty($prenom) || empty($terminal) || empty($modele)){
+	if(empty($login) || empty($nom) || empty($prenom) || empty($terminal) || empty($modele)){
 		header('Location: inscription-erreur.php');
 		exit();
 	}
-	$vSql="SELECT * FROM Utilisateur where nom='$nom'";
+
+	
+	$vSql="SELECT * FROM Utilisateur where login='$login'";
 	$vQuery=pg_query($vConn,$vSql);
 	if($vResult=pg_fetch_array($vQuery)){
 		header('Location: inscription-erreur.php');
@@ -40,15 +43,13 @@
 		exit();
 	}
 	
-	$vSql="SELECT * FROM Modele where id='$modele'";
-	$vQuery=pg_query($vConn,$vSql);
-	if(!$vResult=pg_fetch_array($vQuery)){
+	if(strlen($login)>20 || strlen($nom)>20 || strlen($prenom)>20 || strlen($terminal)>15){
 		header('Location: inscription-erreur.php');
 		exit();
 	}
 	
 	
-	$vSql="INSERT INTO Utilisateur(idClient,nom, prenom) VALUES (DEFAULT,'$nom','$prenom') RETURNING idClient as id;"; 
+	$vSql="INSERT INTO utilisateur(idClient,login,nom,prenom) VALUES (DEFAULT,'$login','$nom','$prenom') RETURNING idClient as id;"; 
 	$vQuery=pg_query($vConn,$vSql);
 	$vResult=pg_fetch_array($vQuery);
 	$vSql="INSERT INTO Terminal(numero_serie,modele,proprietaire) VALUES ('$terminal','$modele',$vResult[id]);";

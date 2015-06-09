@@ -12,7 +12,7 @@ VALUES(3, 'Fau', 'Mathilde');
 INSERT INTO Utilisateur
 VALUES(4, 'Shaita', 'Walid');
 INSERT INTO Utilisateur
-VALUES(5, 'Hajjem', 'Alaeddine');
+VALUES(5, 'Alaeddine', 'Hajjem');
 
 
 INSERT INTO CartePrepayee

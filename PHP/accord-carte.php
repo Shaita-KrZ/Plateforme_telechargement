@@ -13,6 +13,43 @@
 		<div id="header" class="jumbotron">
 			<h1>Accorder une carte prépayée</h1>
 		</div>
+		<div class="panel panel-default">
+			<table class="table">
+				<tr>
+					<th>Numero de carte	</th>
+					<th>Date d'expiration</th>
+					<th>Montant de depart</th>
+					<th>Montant restant</th>
+					<th>Client</th
+				</tr>
+				<?php
+				include('connect.php');
+				$db = fConnect();
+				
+				$sql = "select numero, dateexpiration, montantdepart, montantcourant, client from carteprepayee;";
+				$req = pg_query($db, $sql);
+				
+				
+
+				while($res = pg_fetch_array($req, null, PGSQL_ASSOC))
+				{
+					$sql2="select nom, prenom, login from utilisateur where idclient=".$res['client'];
+					$req2=pg_query($db, $sql2);
+					if($res2=pg_fetch_array($req2, null, PGSQL_ASSOC))
+					{
+						echo('<tr>');
+						echo('<td>' . $res['numero'] . '</td>');
+						echo('<td>' . $res['dateexpiration'] . '</td>');
+						echo('<td>' . $res['montantdepart'] . '€</td>');
+						echo('<td>' . $res['montantcourant'] . '€</td>');
+						echo('<td>' . $res2['nom'].' '.$res2['prenom'].' ('.$res2['login'].')</td>');
+						echo('</tr>');
+					}
+				}
+				
+				?>
+			</table>
+		</div>
 		<form method="POST" action="verif-carte.php">
 			<div class="form-group">
 				<label for="dateExpi">Date d'expiration</label>
@@ -26,13 +63,11 @@
 				<label for="client">Client</label>
 				<select type="text" name="client" class="form-control" id="client" placeholder="Entrez le bénéficiaire de la carte">
 				<?php
-					include('connect.php');
-					$db=fConnect();
-					$sql="Select nom from utilisateur";
-					$req=pg_query($db, $sql);
-					while($res=pg_fetch_array($req, null, PGSQL_ASSOC))
+					$sql3="Select login from utilisateur";
+					$req3=pg_query($db, $sql3);
+					while($res3=pg_fetch_array($req3, null, PGSQL_ASSOC))
 					{
-						echo('<option>'.$res['nom'].'</option>');
+						echo('<option>'.$res3['login'].'</option>');
 					}
 				?>
 				</select>

@@ -15,6 +15,10 @@
 		</div>
 		<form method="POST" action="verification-inscription.php">
 			<div class="form-group">
+				<label for="login">Login</label>
+				<input type="text" name="login" class="form-control" id="login" placeholder="Entrez un login (pour identification)">
+			</div>
+			<div class="form-group">
 				<label for="nom">Nom</label>
 				<input type="text" name="nom" class="form-control" id="nom" placeholder="Entrez votre nom">
 			</div>

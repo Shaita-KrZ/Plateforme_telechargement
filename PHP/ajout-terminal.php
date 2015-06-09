@@ -16,7 +16,7 @@
 		<form method="POST" action="verification-terminal.php">
 			<div class="form-group">
 				<label for="numSerie">Numero de serie du terminal</label>
-				<input type="text" name="numSerie" class="form-control" id="numSerie" placeholder="Entrez le numero de serie de votre terminal">
+				<input type="text" name="numSerie" class="form-control" id="numSerie" placeholder="Entrez le numero de serie de votre terminal" maxlength="15">
 			</div>
 			<div>
 				<label for="modele">Modèle du terminal</label>

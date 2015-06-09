@@ -16,7 +16,7 @@
 		<form method="POST" action="verification-app.php">
 			<div class="form-group">
 				<label for="nom">Nom</label>
-				<input type="text" name="nom" class="form-control" id="nom" placeholder="Entrez le nom de l'application">
+				<input type="text" name="nom" class="form-control" id="nom" placeholder="Entrez le nom de l'application" maxlength="30">
 			</div>
 			<div class="form-group">
 				<label for="editeur">Editeur</label>
@@ -35,7 +35,7 @@
 			</div>
 			<div class="form-group">
 				<label for="description">Description</label>
-				<input type="textarea" name="description" class="form-control" id="description" placeholder="Entrez la description">
+				<input type="textarea" name="description" class="form-control" id="description" placeholder="Entrez la description" maxlength="30">
 			</div>
 			<div>
 				<label for="prix">Prix</label>

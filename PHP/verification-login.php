@@ -18,10 +18,11 @@ if(isset($_POST['login']))
 		include('connect.php');
 		$login=$_POST['login'];
 		$db=fConnect();
-		$sql="Select idClient as id, nom, prenom from utilisateur where nom='$login'";
+		$sql="Select idClient as id, login, nom, prenom from utilisateur where login='$login'";
 		$req=pg_query($db, $sql);
 		if($res=pg_fetch_array($req, null, PGSQL_ASSOC))
 			{
+				$_SESSION['login']=$res['login'];
 				$_SESSION['typeUser']='user';
 				$_SESSION['nom']=$res['nom'];
 				$_SESSION['prenom']=$res['prenom'];

@@ -7,12 +7,11 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-    <title>Inscription</title>
+    <title>Accord Carte</title>
   </head>
   <body>
-		<h1 class="text-center"> Votre login est incorrect.</h1>
-				<!-- insert une ligne horizontal --> <hr>
-		<p><a href="index.php"> Retour pour identification </a></p>
+		<h5 style='color:red'> Erreur : Veuillez remplir tous les champs </h5>
+		<?php include("accord-carte.php");?>
+		
   </body>
-  
 </html>

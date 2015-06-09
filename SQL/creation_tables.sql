@@ -8,8 +8,10 @@ UNIQUE(nom, contact, url)
 
 CREATE TABLE Utilisateur (
 idClient 	SERIAL	PRIMARY KEY,
+login 		VARCHAR(20) 		NOT NULL,
 nom 		VARCHAR(20)			NOT NULL, 
 prenom 		VARCHAR(20)			NOT NULL,
+UNIQUE(login),
 UNIQUE(nom, prenom)
 );
 
